@@ -38,7 +38,7 @@
     <maven.editorconfig.plugin.version>0.1.0</maven.editorconfig.plugin.version>
     <jacoco.plugin.version>0.8.5</jacoco.plugin.version>
     <!-- vertx version should be aligned with cloud events SDK -->
-    <vertx.version>4.0.0.Beta2</vertx.version>
+    <vertx.version>4.0.0.Beta3</vertx.version>
     <cloudevents.sdk.version>2.0.0-milestone2</cloudevents.sdk.version>
     <assertj.version>3.17.2</assertj.version>
     <protobuf.version>3.13.0</protobuf.version>
