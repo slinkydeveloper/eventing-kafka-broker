@@ -46,12 +46,16 @@ public class KafkaClientsAuth {
     if (protocol != null) {
       propertiesSetter.accept(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, protocol.name);
       switch (protocol) {
-        case SSL -> ssl(propertiesSetter, credentials);
-        case SASL_PLAINTEXT -> sasl(propertiesSetter, credentials);
-        case SASL_SSL -> {
+        case SSL:
+          ssl(propertiesSetter, credentials);
+          break;
+        case SASL_PLAINTEXT:
+          sasl(propertiesSetter, credentials);
+          break;
+        case SASL_SSL:
           ssl(propertiesSetter, credentials);
           sasl(propertiesSetter, credentials);
-        }
+          break;
       }
     }
   }

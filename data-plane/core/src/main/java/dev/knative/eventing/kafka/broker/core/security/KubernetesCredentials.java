@@ -151,12 +151,17 @@ class KubernetesCredentials implements Credentials {
       if (SASLMechanism == null) {
         return null;
       }
-      this.SASLMechanism = switch (new String(Base64.getDecoder().decode(SASLMechanism))) {
-        case "PLAIN"         -> "PLAIN";
-        case "SCRAM-SHA-256" -> "SCRAM-SHA-256";
-        case "SCRAM-SHA-512" -> "SCRAM-SHA-512";
-        default -> null;
-      };
+      switch (new String(Base64.getDecoder().decode(SASLMechanism))) {
+        case "PLAIN":
+          this.SASLMechanism = "PLAIN";
+          break;
+        case "SCRAM-SHA-256":
+          this.SASLMechanism = "SCRAM-SHA-256";
+          break;
+        case "SCRAM-SHA-512":
+          this.SASLMechanism = "SCRAM-SHA-512";
+          break;
+      }
     }
     return this.SASLMechanism;
   }

@@ -248,11 +248,13 @@ public class RequestMapper implements Handler<HttpServerRequest>, IngressReconci
   }
 
   private static String encoding(final DataPlaneContract.ContentMode contentMode) {
-    return switch (contentMode) {
-      case BINARY -> Encoding.BINARY.toString();
-      case STRUCTURED -> Encoding.STRUCTURED.toString();
-      default -> throw new IllegalArgumentException("unknown content mode: " + contentMode);
-    };
+    switch (contentMode) {
+      case STRUCTURED:
+        return Encoding.STRUCTURED.toString();
+      case BINARY:
+        return Encoding.BINARY.toString();
+    }
+    throw new IllegalArgumentException("unknown content mode: " + contentMode);
   }
 
   private static class ProducerHolder {

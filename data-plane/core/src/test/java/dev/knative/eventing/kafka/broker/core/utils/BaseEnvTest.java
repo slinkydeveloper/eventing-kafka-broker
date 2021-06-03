@@ -15,23 +15,34 @@
  */
 package dev.knative.eventing.kafka.broker.core.utils;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class BaseEnvTest {
 
-  private static final Function<String, String> provider = s -> switch (s) {
-    case "PRODUCER_CONFIG_FILE_PATH" -> "/tmp/config";
-    case "DATA_PLANE_CONFIG_FILE_PATH" -> "/tmp/config-data";
-    case "METRICS_PORT" -> "9092";
-    case "METRICS_PATH" -> "/path";
-    case "METRICS_PUBLISH_QUANTILES" -> "TRUE";
-    case "CONFIG_TRACING_PATH" -> "/etc/tracing";
-    case "METRICS_JVM_ENABLED" -> "false";
-    case "WAIT_STARTUP_SECONDS" -> "1";
-    default -> throw new IllegalArgumentException("unknown " + s);
+  private static final Function<String, String> provider = s -> {
+    switch (s) {
+      case "PRODUCER_CONFIG_FILE_PATH":
+        return "/tmp/config";
+      case "DATA_PLANE_CONFIG_FILE_PATH":
+        return "/tmp/config-data";
+      case "METRICS_PORT":
+        return "9092";
+      case "METRICS_PATH":
+        return "/path";
+      case "METRICS_PUBLISH_QUANTILES":
+        return "TRUE";
+      case "CONFIG_TRACING_PATH":
+        return "/etc/tracing";
+      case "METRICS_JVM_ENABLED":
+        return "false";
+      case "WAIT_STARTUP_SECONDS":
+        return "1";
+      default:
+        throw new IllegalArgumentException("unknown " + s);
+    }
   };
 
   @Test
